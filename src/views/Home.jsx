@@ -60,7 +60,6 @@ const Home = () => {
   }
   return (
     <div className="home-container">
-      {console.log(cartProducts)}
       <CarouselImg />
       <div className="card-container">
         {products.map((p) => (

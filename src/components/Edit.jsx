@@ -6,7 +6,6 @@ const Edit = (props) => {
   const [editAmount, setEditAmount] = useState(1)
   const [viewEdit, setViewEdit] = useState(false)
   const clean = (i) => {
-    console.log(i)
     if (i === 'delete') {
       setcartProducts(cartProducts.filter((el) => el.id !== props.edit.id))
       props.setViewEdit(false)
