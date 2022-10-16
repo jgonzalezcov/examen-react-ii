@@ -146,7 +146,6 @@ const ShoppingCart = () => {
                     <div className="text-cart8" onClick={() => editProduct(e)}>
                       ✏
                     </div>
-                    {console.log(edit)}
                   </div>
                 ))}
 
@@ -323,8 +322,6 @@ const ShoppingCart = () => {
           {viewPay === 6 &&
           (c1.n !== cor1 || c2.n !== cor2 || c2.n !== cor2) ? (
             <div className="container-end">
-              {console.log('esto es C1', c1)}
-              {console.log('esto setcor1', cor1)}
               <div className="container-btn-payment-accept">
                 <h4 className="text-end">Tu compra no se pudo realizar</h4>
               </div>
@@ -342,8 +339,6 @@ const ShoppingCart = () => {
           )}
           {viewPay === 6 && c1.n === cor1 && c2.n === cor2 && c3.n === cor3 ? (
             <div className="container-end">
-              {console.log('esto es C1', c1)}
-              {console.log('esto setcor1', cor1)}
               <div className="container-btn-payment-accept">
                 <h4 className="text-end">Su compra fue exitosa</h4>
               </div>

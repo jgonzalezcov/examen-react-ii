@@ -59,7 +59,6 @@ const Product = () => {
   }
   return (
     <div className="container-product">
-      {console.log(cartProducts)}
       {products
         .filter((p) => p.id === id)
         .map((e) => (
