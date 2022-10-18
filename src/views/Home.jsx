@@ -34,20 +34,46 @@ const Home = () => {
     setpriceProduct(priceData)
   }
   const addCart = (element) => {
-    setcartProducts([
-      ...cartProducts,
-      {
-        id: idCart,
-        idProduct: element.id,
-        name: element.name,
-        size: sizeAdd,
-        thicknessAdd: thicknessAdd,
-        sauce: sauce,
-        amount: amount,
-        price: priceProduct,
-      },
-    ])
-
+    if (
+      cartProducts.filter(
+        (e) =>
+          e.idProduct === element.id &&
+          e.size === sizeAdd &&
+          e.thicknessAdd === thicknessAdd &&
+          e.sauce === sauce
+      ).length > 0
+    ) {
+      setcartProducts((current) =>
+        current.map((obj) => {
+          if (obj.idProduct === element.id) {
+            return { ...obj, amount: obj.amount * 1 + amount * 1 }
+          }
+          return obj
+        })
+      )
+    } else if (
+      cartProducts.filter(
+        (e) =>
+          e.idProduct === element.id &&
+          e.size === sizeAdd &&
+          e.thicknessAdd === thicknessAdd &&
+          e.sauce === sauce
+      ).length === 0
+    ) {
+      setcartProducts([
+        ...cartProducts,
+        {
+          id: idCart,
+          idProduct: element.id,
+          name: element.name,
+          size: sizeAdd,
+          thicknessAdd: thicknessAdd,
+          sauce: sauce,
+          amount: amount,
+          price: priceProduct,
+        },
+      ])
+    }
     setViewAdd('')
   }
 
