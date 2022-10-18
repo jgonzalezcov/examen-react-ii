@@ -21,7 +21,7 @@ const Navbar = () => {
             <h4 className="amount-num">
               {cartProducts
                 .map((item) => item.amount)
-                .reduce((prev, curr) => prev + curr, 0)}
+                .reduce((prev, curr) => prev * 1 + curr * 1, 0)}
             </h4>
           </div>
           <h4 className="text-nav">Carro</h4>
