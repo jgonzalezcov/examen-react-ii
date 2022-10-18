@@ -18,7 +18,11 @@ const Navbar = () => {
         <NavLink className="btn-link" end to="/carro">
           <div className="container-amount-num">
             <img className="ico-navlink" src={cart} alt="" />
-            <h4 className="amount-num">{cartProducts.length}</h4>
+            <h4 className="amount-num">
+              {cartProducts
+                .map((item) => item.amount)
+                .reduce((prev, curr) => prev + curr, 0)}
+            </h4>
           </div>
           <h4 className="text-nav">Carro</h4>
         </NavLink>
