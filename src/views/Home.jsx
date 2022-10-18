@@ -39,27 +39,32 @@ const Home = () => {
         (e) =>
           e.idProduct === element.id &&
           e.size === sizeAdd &&
-          e.thicknessAdd === thicknessAdd &&
-          e.sauce === sauce
+          e.sauce === sauce &&
+          e.thicknessAdd === thicknessAdd
       ).length > 0
     ) {
       setcartProducts((current) =>
         current.map((obj) => {
-          if (obj.idProduct === element.id) {
+          console.log(
+            obj.idProduct,
+            element.id,
+            obj.size,
+            sizeAdd,
+            obj.thicknessAdd,
+            thicknessAdd
+          )
+          if (
+            obj.idProduct === element.id &&
+            obj.size === sizeAdd &&
+            obj.thicknessAdd === thicknessAdd &&
+            obj.sauce === sauce
+          ) {
             return { ...obj, amount: obj.amount * 1 + amount * 1 }
           }
           return obj
         })
       )
-    } else if (
-      cartProducts.filter(
-        (e) =>
-          e.idProduct === element.id &&
-          e.size === sizeAdd &&
-          e.thicknessAdd === thicknessAdd &&
-          e.sauce === sauce
-      ).length === 0
-    ) {
+    } else {
       setcartProducts([
         ...cartProducts,
         {
