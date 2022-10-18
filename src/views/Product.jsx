@@ -33,23 +33,53 @@ const Product = () => {
     setpriceProduct(priceData)
   }
   const addCart = (element) => {
-    setcartProducts([
-      ...cartProducts,
-      {
-        id: idCart,
-        idProduct: element.id,
-        name: element.name,
-        size: sizeAdd,
-        thicknessAdd: thicknessAdd,
-        sauce: sauce,
-        amount: amount,
-        price: priceProduct,
-      },
-    ])
-
+    if (
+      cartProducts.filter(
+        (e) =>
+          e.idProduct === element.id &&
+          e.size === sizeAdd &&
+          e.sauce === sauce &&
+          e.thicknessAdd === thicknessAdd
+      ).length > 0
+    ) {
+      setcartProducts((current) =>
+        current.map((obj) => {
+          console.log(
+            obj.idProduct,
+            element.id,
+            obj.size,
+            sizeAdd,
+            obj.thicknessAdd,
+            thicknessAdd
+          )
+          if (
+            obj.idProduct === element.id &&
+            obj.size === sizeAdd &&
+            obj.thicknessAdd === thicknessAdd &&
+            obj.sauce === sauce
+          ) {
+            return { ...obj, amount: obj.amount * 1 + amount * 1 }
+          }
+          return obj
+        })
+      )
+    } else {
+      setcartProducts([
+        ...cartProducts,
+        {
+          id: idCart,
+          idProduct: element.id,
+          name: element.name,
+          size: sizeAdd,
+          thicknessAdd: thicknessAdd,
+          sauce: sauce,
+          amount: amount,
+          price: priceProduct,
+        },
+      ])
+    }
     setViewAdd('')
   }
-
   const addCancel = (pId) => {
     setViewAdd('')
     setSizeAdd('Grande')
